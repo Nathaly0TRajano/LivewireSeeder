@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $tarefaId;
     public $nome;
     public $data_hora;
     public $descricao;
@@ -22,6 +23,16 @@ class Index extends Component
             $this->nome = $tarefa->nome;
             $this->data_hora = $tarefa->data_hora;
             $this->descricao = $tarefa->descricao;
+        }
+    }
+    // atribuindo valor a variavel publica da classe (aquela que tá lá em cima), valor da id ao clicarmos no botão excluir (não da Modal).
+    public function abrirModalExclusao($tarefaId){
+        $this->tarefaId = $tarefaId;
+    }
+    // chamar a função excluir, com o valor da tarefaId que é o Id da tarefa, selecionado no abrirModalExclusao
+    public function excluir(){
+        if($this->tarefaId){
+            Tarefa::find($this->tarefaId)->delete();
         }
     }
 }
