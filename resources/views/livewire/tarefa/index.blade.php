@@ -20,7 +20,7 @@
                                 <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewModal"
                                     wire:click="abrirModalVisualizar({{ $t->id }})">Visualizar</button>
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#editModel">Editar</button>
+                                    data-bs-target="#editModal">Editar</button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal" wire:click="abrirModalExclusao({{ $t->id}})" >Excluir</button>
                             </td>
@@ -28,6 +28,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <livewire:tarefa.edit>
         </div>
     </div>
 
