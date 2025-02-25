@@ -7,10 +7,35 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-    public $tarefaId; 
+    public $tarefaId;
     public $nome;
     public $data_hora;
-    public $descricao; 
+    public $descricao;
+
+    protected $listeners = [
+        'editarTarefa',
+        'closeEditModal' => 'fecharEditModal'
+    ];
+
+    public function fecharModal (){
+        $this->dispatch('hideModal');
+
+    }
+
+    public function salvar(){
+        $tarefa = Tarefa::find($this->tarefaId);
+        if($tarefa){
+            $tarefa->update([
+                'nome'=>$this->nome,
+                'data_hora'=>$this->data_hora,
+                'descricao'=>$this->descricao
+            ]);
+
+            $this->dispatch('tarefaAtualizada');
+            $this->dispatch('fecharModalEdicao');
+            session()->flash('message', 'Tarefa Atualizada');
+        }
+    }
 
     public function render()
     {
@@ -19,13 +44,16 @@ class Edit extends Component
 
     // fizemos um find para saber em qual tarefa vamos fazer o update, e fizemos com que, se tiver esse id, ele vai preencher a variavel tarefa
     // com os valores que foram digitados (dentro da edição).
-    public function editarTarefa($tarefaId){
+    public function editarTarefa($tarefaId)
+    {
         $tarefa = Tarefa::find($tarefaId);
-        if($tarefa){
+        if ($tarefa) {
             $this->tarefaId = $tarefa->id;
             $this->nome = $tarefa->nome;
             $this->data_hora = $tarefa->data_hora;
             $this->descricao = $tarefa->descricao;
+
+            $this->dispatch('openEditModal');
         }
     }
 }
