@@ -19,10 +19,15 @@
                             <td>
                                 <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewModal"
                                     wire:click="abrirModalVisualizar({{ $t->id }})">Visualizar</button>
+
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#editModal" wire:click="abrirModalEdicao({{$t->id}})">Editar</button>
+
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal" wire:click="abrirModalExclusao({{ $t->id}})" >Excluir</button>
+                                    
+                                 {{-- $t -> Item dentre todas as tarefas. $tarefas (todas as tarefas), $t(apenas aquela tarefa)  --}}
+                                <a href="{{route('tarefa.editar', ['id'=> $t->id])}}" class="btn btn-info btn-sm">Editar sem modal</a>
                             </td>
                         </tr>
                     @endforeach

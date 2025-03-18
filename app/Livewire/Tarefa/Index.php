@@ -12,10 +12,10 @@ class Index extends Component
     public $data_hora;
     public $descricao;
 
+    // listeners -> Espera um evento, que se encontra dentro do array, para chamar/executar uma ação.
     protected $listeners = [
         'abrirModalEdicao',
-        'tarefaAtualizada' => 'render',
-        ''
+        'tarefaAtualizada' => 'render'
     ];
 
     public function render()
