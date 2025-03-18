@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-sucess">Cadastrar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
             </form>
         </div>

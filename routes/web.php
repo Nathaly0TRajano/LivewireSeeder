@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('tarefa/create', Create::class);
 Route::get('/tarefa/index', Index::class);
-Route::get('edita/{id}r', Editar::class)->name('tarefa.editar'); // name -> facilita para quando tivermos uma rota muito longa
+Route::get('editar/{id}', Editar::class)->name('tarefa.editar'); // name -> facilita para quando tivermos uma rota muito longa
